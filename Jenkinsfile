@@ -1,9 +1,15 @@
 pipeline {
     agent any
+    triggers { cron ('* * * * *') }
     stages {
-        stage('Checkout') {
+        stage('Compile') {
             steps {
-                git url: 'https://github.com/vadimosipov/calculator.git'
+                sh './gradlew compileJava'
+            }
+        }
+        stage('Unit test') {
+            steps {
+                sh './gradlew test'
             }
         }
     }
