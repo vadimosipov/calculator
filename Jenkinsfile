@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    triggers { cron ('0/3 * * * *') }
+    triggers { cron ('*/3 * * * *') }
     stages {
         stage('Compile') {
             steps {
